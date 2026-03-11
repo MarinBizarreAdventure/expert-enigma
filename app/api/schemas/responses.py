@@ -21,6 +21,39 @@ class WeatherResponse(BaseModel):
     feels_like_c: Optional[float] = None
 
 
+class PlaceCardResponse(BaseModel):
+    name: str
+    type: str
+    address: str
+    why: str
+    price_range: Optional[str] = None
+    url: Optional[str] = None
+    image_url: Optional[str] = None
+
+
+class OutfitCardResponse(BaseModel):
+    items: List[str]
+    reasoning: str
+
+
+class ChatResponse(BaseModel):
+    conversation_id: str
+    reply: str
+    places: Optional[List[PlaceCardResponse]] = None
+    outfit: Optional[OutfitCardResponse] = None
+
+
+class ProfileResponse(BaseModel):
+    user_id: str
+    name: str
+    default_city: str
+    style_preferences: List[str]
+    budget_default: str
+    dietary_restrictions: List[str]
+    favorite_cuisines: List[str]
+    avoid: List[str]
+
+
 class PlaceResponse(BaseModel):
     name: str
     type: str
@@ -41,14 +74,3 @@ class RecommendationResponse(BaseModel):
     places: List[PlaceResponse]
     outfit: OutfitResponse
     summary: str
-
-
-class ProfileResponse(BaseModel):
-    user_id: str
-    name: str
-    default_city: str
-    style_preferences: List[str]
-    budget_default: str
-    dietary_restrictions: List[str]
-    favorite_cuisines: List[str]
-    avoid: List[str]

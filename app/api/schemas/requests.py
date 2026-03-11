@@ -32,3 +32,9 @@ class RecommendationRequest(BaseModel):
     occasion: str
     budget: str = "medium"
     preferences: str = ""
+
+
+class ChatRequest(BaseModel):
+    user_id: str
+    message: str
+    conversation_id: Optional[str] = None

@@ -1,21 +1,19 @@
 from abc import ABC, abstractmethod
+from typing import Any, Dict, List, Optional, Tuple
 
-from app.domain.entities.recommendation import Recommendation
 from app.domain.entities.user_profile import UserProfile
-from app.domain.entities.weather import Weather
 
 
 class AgentService(ABC):
     @abstractmethod
-    async def generate_recommendation(
+    async def chat(
         self,
         profile: UserProfile,
-        weather: Weather,
-        city: str,
-        date: str,
-        time_of_day: str,
-        occasion: str,
-        budget: str,
-        preferences: str,
-    ) -> Recommendation:
+        messages: List[dict],
+    ) -> Tuple[str, List[dict], Optional[Dict[str, Any]]]:
+        """
+        Run the agent loop.
+        Returns (reply_text, updated_messages, structured_data_or_None).
+        structured_data contains: places, outfit (from present_recommendation tool).
+        """
         ...

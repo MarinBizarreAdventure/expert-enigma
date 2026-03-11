@@ -25,15 +25,4 @@ class GetRecommendation:
         budget: str,
         preferences: str,
     ) -> Recommendation:
-        profile = await self._user_repository.get_profile(user_id)
-        weather = await self._weather_service.get_weather(city, date)
-        return await self._agent_service.generate_recommendation(
-            profile=profile,
-            weather=weather,
-            city=city,
-            date=date,
-            time_of_day=time_of_day,
-            occasion=occasion,
-            budget=budget,
-            preferences=preferences,
-        )
+        raise NotImplementedError("Use /api/v1/chat for recommendations")
